@@ -33,6 +33,14 @@ export default function Home() {
           <Image style={{rotate: '1deg', marginBottom: '-110px'}} src="images/Airplane.svg" alt="Airplane"/>
         </HStack>
       </Flex>
+      <Box maxW="1160px" mx="auto">
+        <HStack>
+          <Flex direction="column" align="center">
+            <Image src="images/cocktail.svg" alt="cocktail"/>
+            <Text>Vida noturna</Text>
+          </Flex>
+        </HStack>
+      </Box>
     </>
   )
 }
