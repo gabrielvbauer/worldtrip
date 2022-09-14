@@ -1,6 +1,9 @@
-import { Flex, HStack, Stack, Text, Image, Box, VStack, Avatar } from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, Image, Box, VStack, Avatar, Icon } from "@chakra-ui/react";
 import Head from "next/head";
+import { City } from "../Components/City/index";
 import { Header } from "../Components/Header/index";
+import { FiInfo } from 'react-icons/fi'
+import { ContinentIndicator } from "../Components/ContinentIndicator/index";
 
 interface ContinentProps {
   continent: string
@@ -24,32 +27,20 @@ export default function Continent({ continent }: ContinentProps) {
             A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
           </Text>
           <HStack spacing="2.625rem">
-            <Flex direction="column" align="center">
-              <Text color="yellow.500" fontSize="3rem" fontWeight="semibold">50</Text>
-              <Text fontSize="1.5rem" fontWeight="semibold">países</Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <Text color="yellow.500" fontSize="3rem" fontWeight="semibold">60</Text>
-              <Text fontSize="1.5rem" fontWeight="semibold">línguas</Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <Text color="yellow.500" fontSize="3rem" fontWeight="semibold">27</Text>
-              <Text fontSize="1.5rem" fontWeight="semibold">cidades + 100</Text>
-            </Flex>
+            <ContinentIndicator value="50" title="países" />
+            <ContinentIndicator value="60" title="línguas" />
+            <ContinentIndicator value="27" title="cidades +100" icon={FiInfo} />
           </HStack>
         </HStack>
         <VStack spacing="2.5rem" align="self-start">
           <Text fontSize="2.25rem" fontWeight="medium">Cidades +100</Text>
-          <VStack rounded="0.25rem" overflow="hidden" align="start" border="0.125rem" borderColor="yellow.400">
-            <Image src="https://github.com/gabrielvbauer.png" alt="city" />
-            <HStack px="1.5rem" pb="1.5rem" py="1.125rem">
-              <VStack>
-                <Text>Londres</Text>
-                <Text>Reino Unido</Text>
-              </VStack>
-              <Avatar />
-            </HStack>
-          </VStack>
+          <Flex gap="2.8rem" wrap="wrap" justify="space-between">
+            <City title="Londres" subtitle="Reino unido" image="" flag=""/>
+            <City title="Paris" subtitle="França" image="" flag=""/>
+            <City title="Roma" subtitle="Itália" image="" flag=""/>
+            <City title="Praga" subtitle="República Tcheca" image="" flag=""/>
+            <City title="Amsterdã" subtitle="Holanda" image="" flag=""/>
+          </Flex>
         </VStack>
       </Box>
     </>
