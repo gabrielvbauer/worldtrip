@@ -15,7 +15,7 @@ export default function Continent({ continent }: ContinentProps) {
       <Head>
         <title>{continent} | Worldtrip</title>
       </Head>
-      <Header />
+      <Header showGoBackButton />
       <Flex bgImage="images/europe.jpg" bgRepeat="no-repeat" bgPos="center" bgSize="cover" minH="31.25rem">
         <HStack maxW="1160px" w="100%" mx="auto" alignItems="end" pb="3.68rem">
           <Text color="white.500" fontSize="3rem" fontWeight="semibold">Europa</Text>
@@ -32,7 +32,7 @@ export default function Continent({ continent }: ContinentProps) {
             <ContinentIndicator value="27" title="cidades +100" icon={FiInfo} />
           </HStack>
         </HStack>
-        <VStack spacing="2.5rem" align="self-start">
+        <VStack spacing="2.5rem" align="self-start" mb="2.1875rem">
           <Text fontSize="2.25rem" fontWeight="medium">Cidades +100</Text>
           <Flex gap="2.8rem" wrap="wrap" justify="space-between">
             <City title="Londres" subtitle="Reino unido" image="" flag=""/>
