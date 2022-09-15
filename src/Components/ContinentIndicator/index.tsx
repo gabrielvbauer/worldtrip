@@ -9,9 +9,9 @@ interface ContinentIndicatorProps {
 
 export function ContinentIndicator({ value, title, icon }: ContinentIndicatorProps) {
   return (
-    <Flex direction="column" align="center">
-      <Text color="yellow.500" fontSize="3rem" fontWeight="semibold">{value}</Text>
-      <Text fontSize="1.5rem" fontWeight="semibold" display="flex" alignItems="center">
+    <Flex direction="column" align={["start", "center"]}>
+      <Text color="yellow.500" fontSize={["1.5rem", "3rem"]} fontWeight="semibold">{value}</Text>
+      <Text fontSize={["1.125rem", "1.5rem"]} fontWeight={["regular", "semibold"]} display="flex" alignItems="center">
         {title}
         {icon && 
           <Tooltip label="info">
