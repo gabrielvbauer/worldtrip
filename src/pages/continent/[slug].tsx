@@ -1,9 +1,9 @@
-import { Flex, HStack, Stack, Text, Image, Box, VStack, Avatar, Icon } from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, Box, VStack } from "@chakra-ui/react";
 import Head from "next/head";
-import { City } from "../Components/City/index";
-import { Header } from "../Components/Header/index";
+import { City } from "../../Components/City/index";
+import { Header } from "../../Components/Header/index";
 import { FiInfo } from 'react-icons/fi'
-import { ContinentIndicator } from "../Components/ContinentIndicator/index";
+import { ContinentIndicator } from "../../Components/ContinentIndicator/index";
 
 interface ContinentProps {
   continent: string

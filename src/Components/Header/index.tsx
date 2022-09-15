@@ -1,4 +1,4 @@
-import { Flex, Box, Image, Icon, IconButton } from "@chakra-ui/react";
+import { Flex, Box, Image, IconButton } from "@chakra-ui/react";
 import Link from "next/link";
 import { FiChevronLeft } from 'react-icons/fi';
 

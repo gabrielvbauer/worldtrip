@@ -1,8 +1,11 @@
-import { Box, Center, Divider, Flex, HStack, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Center, Divider, Flex, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import Head from 'next/head'
-import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Benefits } from '../Components/Benefits/index'
 import { Header } from '../Components/Header/index'
+
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+import { SwipeItem } from '../Components/SwipeItem/index'
 
 export default function Home() {
   return (
@@ -45,12 +48,30 @@ export default function Home() {
         </Center>
         <Text my="3.25rem" fontSize={["1.25rem", "2.25rem"]} fontWeight="medium" textAlign='center'>Vamos nessa?<br />Então escolha seu continente</Text>
         <Flex minH="28.125rem">
-          <Link href="/continent">
-            <Center>
-              <Text>Europa</Text>
-              <Text>O continente mais antigo</Text>
-            </Center>
-          </Link>
+          <Swiper
+            navigation={true}
+            pagination={true}
+            keyboard={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          >
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/europa'
+                image='https://github.com/gabrielvbauer.png'
+                title="Europa"
+                subtitle='O continente mais antigo.'
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/africa'
+                image='https://github.com/gabrielvbauer.png'
+                title="Europa"
+                subtitle='O continente mais antigo.'
+              />
+            </SwiperSlide>
+          </Swiper>
+          
         </Flex>
       </Box>
     </>
