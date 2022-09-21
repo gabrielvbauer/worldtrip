@@ -1,5 +1,6 @@
 import { Box, Center, Divider, Flex, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import Head from 'next/head'
+//@ts-ignore
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Benefits } from '../Components/Benefits/index'
 import { Header } from '../Components/Header/index'
@@ -49,6 +50,7 @@ export default function Home() {
         <Text my="3.25rem" fontSize={["1.25rem", "2.25rem"]} fontWeight="medium" textAlign='center'>Vamos nessa?<br />Então escolha seu continente</Text>
         <Flex minH="28.125rem">
           <Swiper
+            //@ts-ignore
             navigation={true}
             pagination={true}
             keyboard={true}
@@ -57,21 +59,57 @@ export default function Home() {
             <SwiperSlide>
               <SwipeItem
                 href='/continent/europa'
-                image='https://github.com/gabrielvbauer.png'
+                image='/images/europe.png'
                 title="Europa"
                 subtitle='O continente mais antigo.'
               />
             </SwiperSlide>
+
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/asia'
+                image='/images/asia.jpg'
+                title="Ásia"
+                subtitle='O continente mais populoso.'
+              />
+            </SwiperSlide>
+
             <SwiperSlide>
               <SwipeItem
                 href='/continent/africa'
-                image='https://github.com/gabrielvbauer.png'
-                title="Europa"
-                subtitle='O continente mais antigo.'
+                image='/images/africa.jpg'
+                title="África"
+                subtitle='O continente mais colorido.'
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/america-do-sul'
+                image='/images/america1.jpg'
+                title="América do Sul"
+                subtitle='O continente mais diversificado.'
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/america-do-norte'
+                image='/images/america2.jpg'
+                title="América do Norte"
+                subtitle='O continente mais avançado.'
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <SwipeItem
+                href='/continent/oceania'
+                image='/images/oceania.jpg'
+                title="Oceania"
+                subtitle='O continente mais peculiar.'
               />
             </SwiperSlide>
           </Swiper>
-          
         </Flex>
       </Box>
     </>

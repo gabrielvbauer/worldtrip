@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve": "json-server --watch server.json"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
@@ -14,9 +15,13 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@types/swiper": "^6.0.0",
+    "axios": "^0.27.2",
     "framer-motion": "^7.3.2",
+    "json-server": "^0.17.0",
+    "miragejs": "^0.1.45",
     "next": "12.2.5",
     "react": "18.2.0",
+    "react-country-flag": "^3.0.2",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "swiper": "^8.4.2"

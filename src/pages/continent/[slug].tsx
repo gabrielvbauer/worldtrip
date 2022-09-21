@@ -4,19 +4,35 @@ import { City } from "../../Components/City/index";
 import { Header } from "../../Components/Header/index";
 import { FiInfo } from 'react-icons/fi'
 import { ContinentIndicator } from "../../Components/ContinentIndicator/index";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { api } from "../../services/api";
 
 interface ContinentProps {
-  continent: string
+  continent: {
+    slug: string;
+    name: string;
+    description: string;
+    bannerImage: string;
+    numberOfCountries: number;
+    numberOfLanguages: number;
+    amountMostPopularCities: number;
+    mostPopularCities: {
+      cityName: string;
+      countryName: string;
+      countryCode: string;
+      cityImage: string;
+    }[]
+  }
 }
 
 export default function Continent({ continent }: ContinentProps) {
   return (
     <>
       <Head>
-        <title>{continent} | Worldtrip</title>
+        <title>{continent.name} | Worldtrip</title>
       </Head>
       <Header showGoBackButton />
-      <Flex bgImage="images/europe.jpg" bgRepeat="no-repeat" bgPos="center" bgSize="cover" minH={["9.375rem", "31.25rem"]}>
+      <Flex bgImage={continent.bannerImage} bgRepeat="no-repeat" bgPos="center" bgSize="cover" minH={["9.375rem", "31.25rem"]}>
         <Flex
           maxW="1160px"
           w="100%"
@@ -31,7 +47,7 @@ export default function Continent({ continent }: ContinentProps) {
             fontSize={["1.75rem", "3rem"]}
             fontWeight="semibold"
           >
-            Europa
+            {continent.name}
           </Text>
         </Flex>
       </Flex>
@@ -43,25 +59,52 @@ export default function Continent({ continent }: ContinentProps) {
           px="2"
         >
           <Text maxW="37.5rem" fontSize={["0.875rem", "1.5rem"]} fontWeight="normal" textAlign="justify">
-            A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
+            {continent.description}
           </Text>
           <HStack spacing="2.625rem">
-            <ContinentIndicator value="50" title="países" />
-            <ContinentIndicator value="60" title="línguas" />
-            <ContinentIndicator value="27" title="cidades +100" icon={FiInfo} />
+            <ContinentIndicator value={continent.numberOfCountries} title="países" />
+            <ContinentIndicator value={continent.numberOfLanguages} title="línguas" />
+            <ContinentIndicator value={continent.amountMostPopularCities} title="cidades +100" icon={FiInfo} />
           </HStack>
         </Stack>
         <VStack spacing={["1.25rem", "2.5rem"]} align="self-start" mb={["1.25rem", "2.1875rem"]}>
           <Text fontSize={["1.5rem", "2.25rem"]} fontWeight="medium" px="2">Cidades +100</Text>
           <Flex gap="2.8rem" wrap="wrap" justify={["center", "space-between"]}>
-            <City title="Londres" subtitle="Reino unido" image="" flag=""/>
-            <City title="Paris" subtitle="França" image="" flag=""/>
-            <City title="Roma" subtitle="Itália" image="" flag=""/>
-            <City title="Praga" subtitle="República Tcheca" image="" flag=""/>
-            <City title="Amsterdã" subtitle="Holanda" image="" flag=""/>
+            {continent.mostPopularCities.map(city => (
+              <City
+                key={city.cityName}
+                title={city.cityName}
+                subtitle={city.countryName}
+                image={city.cityImage}
+                flag={city.countryCode}
+              />
+            ))}
           </Flex>
         </VStack>
       </Box>
     </>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params
+
+  const response = await api.get(`/continents?slug=${slug}`)
+
+  const continentInfos: ContinentProps = response.data[0]
+
+  console.log(continentInfos)
+
+  return {
+    props: {
+      continent: continentInfos
+    }
+  }
 }

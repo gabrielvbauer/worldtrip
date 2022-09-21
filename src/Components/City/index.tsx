@@ -1,4 +1,5 @@
-import { VStack, HStack, Avatar, Image, Text } from "@chakra-ui/react";
+import { VStack, HStack, Avatar, Image, Text, Flex } from "@chakra-ui/react";
+import ReactCountryFlag from "react-country-flag";
 
 interface CityProps {
   title: string;
@@ -17,7 +18,7 @@ export function City({ title, subtitle, image, flag }: CityProps) {
       w="16rem"
     >
       <Image
-        src="https://github.com/gabrielvbauer.png"
+        src={image}
         alt="city"
         w="100%"
         fit="cover"
@@ -52,7 +53,10 @@ export function City({ title, subtitle, image, flag }: CityProps) {
             {subtitle}
           </Text>
         </VStack>
-        <Avatar size="sm" />
+        <ReactCountryFlag countryCode={flag} svg style={{
+          width: '32px',
+          height: '28px',
+        }}/>
       </HStack>
     </VStack>
   )

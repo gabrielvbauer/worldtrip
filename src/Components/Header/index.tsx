@@ -15,7 +15,7 @@ export function Header({ showGoBackButton = false }: HeaderProps) {
             <IconButton icon={<FiChevronLeft size="24px" />} aria-label="Voltar" bg="transparent" />
           </Link>
         }
-        <Image src="images/Logo.svg" alt='Logo' mx="auto" />
+        <Image src="/images/Logo.svg" alt='Logo' mx="auto" />
       </Flex>
     </Box>
   )
